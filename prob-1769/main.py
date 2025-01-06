@@ -4,12 +4,19 @@ class Solution(object):
         :type boxes: str
         :rtype: List[int]
         """
-        ans = []
+
+        _1 = []
+        ans = [0] * len(boxes)
         for i in range(len(boxes)):
-            for j in range(i + 1, len(boxes) - i - 1):
-               if boxes[j] == "1":
-                    ans.append(j-i)
-        return ans 
+            if boxes[i] == '1':
+                _1.append(i)
+            
+            for j in range(i + 1, len(boxes)):
+                if boxes[j] == '1':
+                    ans[i] += abs(i - j)
+            ans[i] += sum([abs(i - x) for x in _1])
+        return ans
+        
     
 test = Solution()
 
