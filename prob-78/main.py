@@ -9,15 +9,12 @@ class Solution(object):
         subset.append([])
         subset.append(nums)
 
-        k, j = 0, 0
-
-        while (k < len(nums)):
-            temp = []
-            while (temp.extend([nums[j]]) not in subset):
-                temp.append(nums[k])
-                subset.append(temp.extend([nums[j]]))
-                j += 1
-            k += 1
+        for i in range(len(nums)):
+            extend = i
+            for k in range(len(nums)):
+                if nums[k:extend] not in subset:
+                    subset.append(nums[k:extend])
+                extend += 1
 
         return subset
     
