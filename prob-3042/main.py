@@ -8,7 +8,7 @@ class Solution(object):
         ans = 0
         for i in range(len(words)):
             for j in range(len(words)):
-                if i != j and self.isPrefixAndSuffix(words[i], words[j]):
+                if i < j and self.isPrefixAndSuffix(words[i], words[j]):
                     ans += 1
         
         return ans
