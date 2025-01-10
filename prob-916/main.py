@@ -23,11 +23,6 @@ class Solution(object):
         
         return res
 
-            
-
-            
-        
-
 
 words1 = ["amazon","apple","facebook","google","leetcode"]
 words2 = ["e","o"]
