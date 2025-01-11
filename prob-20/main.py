@@ -22,3 +22,6 @@ class Solution(object):
 s = "([)]"
 test = Solution()
 print(test.isValid(s)) # True
+
+st = ["]"]
+print(st[-1])
