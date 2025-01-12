@@ -6,21 +6,24 @@ class Solution(object):
         :rtype: bool
         """
         
-        if (s[0] == ")" and locked[0] == "1") or len(s) % 2 != 0:
+        if len(s) % 2 == 1:
             return False
-        
+            
         unlocked_stack = []
         locked_stack = []
+        
         for i in range(len(s)):
-            if locked == "0" and s[i] == "(":
+            if locked[i] == "0":
                 unlocked_stack.append(i)
-            elif locked == "0" and s[i] == ")":
+            elif s[i] == "(":
+                locked_stack.append(i)
+            else:
                 if locked_stack:
                     locked_stack.pop()
                 elif unlocked_stack:
                     unlocked_stack.pop()
-            elif locked == "1" and (s[i] == "(" or s[i] == ")"):
-                locked_stack.append(i)
+                else:
+                    return False
 
         while locked_stack and unlocked_stack and locked_stack[-1] < unlocked_stack[-1]:
                 locked_stack.pop()
@@ -34,7 +37,8 @@ class Solution(object):
         
     
 
-s = "())(()(()(())()())(())((())(()())((())))))(((((((())(()))))("
-locked = "100011110110011011010111100111011101111110000101001101001111"
+s = "()"
+locked = "11"
 test = Solution()
-print(test.canBeValid(s, locked)) # False
+print(test.canBeValid(s, locked)) # True
+
